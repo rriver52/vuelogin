@@ -13,13 +13,13 @@ const loggingOut = () => {
 </script>
 
 <template>
-  <div class="text-red-200 bg-pink-800">
+  <div class="text-red-200 bg-green-800">
     <div class="container flex items-center justify-between mx-auto">
-      <h1 class="text-3xl font-thin tracking-tighter">
+      <h1 class="font-thin tracking-tighter text-8xl">
         Vue<span class="font-normal">RealAuth</span>
       </h1>
       <nav>
-        <ul class="flex space-x-4">
+        <ul class="flex space-x-10">
           <router-link to="/">
             <li
               class="px-4 py-8 hover:cursor-pointer hover:bg-pink-500 hover:text-green-800"
