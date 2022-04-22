@@ -1,14 +1,57 @@
+<script setup>
+  import { onUnmounted, ref } from 'vue'
+  import useChat from '../composable/useChat'
+  import useAuth from '../composable/useAuth'
+
+  const { messages, unsubscribe, sendMessage } = useChat()
+  const { user } = useAuth()
+
+  const newMessage = ref('')
+
+  const send = () => {
+    sendMessage(newMessage.value)
+    newMessage.value = ''
+  }
+
+  onUnmounted(() => {
+    unsubscribe()
+  })
+</script>
+
 <template>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt autem
-    reprehenderit iusto qui, dolor explicabo, quae beatae officia eveniet
-    itaque, quia magnam sunt quaerat? Vero necessitatibus impedit maiores nobis
-    aperiam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-    inventore magni temporibus asperiores sunt nihil maiores excepturi, velit
-    neque et non autem unde optio quos aspernatur blanditiis in eligendi
-    repellat? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-    fuga aspernatur numquam blanditiis at consectetur magnam, voluptatem
-    sapiente voluptate adipisci dolore nesciunt dignissimos! Vel omnis, nulla
-    corporis deserunt consequuntur ratione?
-  </p>
+  <h1 class="mt-8 text-6xl font-thin tracking-tighter text-center">
+    Cool Chat
+  </h1>
+  <div
+    class="
+      min-h-[500px]
+      w-full
+      mt-8
+      rounded-lg
+      shadow-2xl
+      flex flex-col
+      justify-between
+    "
+  >
+    <ul class="p-4 space-y-4">
+      <li v-for="message in messages" :key="message.id">
+        <div
+          class="flex justify-between px-4 py-2 rounded-lg"
+          :class="user === message.author ? 'bg-yellow-200' : 'bg-gray-200'"
+        >
+          <span>{{ message.text }}</span
+          ><span>by {{ message.author }}</span>
+        </div>
+      </li>
+    </ul>
+    <div>
+      <input
+        class="w-full p-4 rounded-lg focus:outline-none focus:bg-yellow-200"
+        type="text"
+        placeholder="Type a message..."
+        v-model="newMessage"
+        @change="send"
+      />
+    </div>
+  </div>
 </template>
