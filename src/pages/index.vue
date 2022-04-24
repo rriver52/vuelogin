@@ -1,12 +1,7 @@
 <script setup>
 import useAuth from "../composable/useAuth";
-
-
 const { isAuthenticated, user } = useAuth();
 </script>
-<style>
-  @import '../assets/style.css';
-</style>
 
 <template>
   <div
@@ -16,11 +11,11 @@ const { isAuthenticated, user } = useAuth();
       v-if="!isAuthenticated"
       class="text-6xl tracking-tighter font-extralight"
     >
-      Welcome Please Log in 
+      Welcome
     </h2>
     <h2 v-else class="text-6xl tracking-tighter font-extralight">
       Welcome {{ user }}
     </h2>
-    <img src="../assets/shop.jpg" alt="Hello BG" />
+    <img src="../assets/bgindex.png" alt="Hello BG" />
   </div>
 </template>

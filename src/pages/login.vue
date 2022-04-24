@@ -55,12 +55,12 @@ const { ready, start } = useTimeout(3000, { controls: true });
 
 <template>
   <div
-    class="flex flex-col items-center justify-center space-y-12 min-h-screen-nonav"
+    class="flex flex-col items-center justify-center space-y-12  min-h-screen-nonav"
   >
     <div
       class="flex items-center justify-center overflow-hidden bg-gray-200 rounded-lg shadow-2xl "
     >
-      <img class="h-64" src="../assets/log.jpg" alt="Hello BG" />
+      <img class="h-64" src="../assets/bglogin.png" alt="Hello BG" />
       <form @submit.prevent="logginIn" class="flex flex-col p-4 space-y-4">
         <input
           name="username"
@@ -109,7 +109,7 @@ const { ready, start } = useTimeout(3000, { controls: true });
     </div>
     <div
       v-if="!ready && error"
-      class="absolute w-1/3 p-4 text-center text-red-800 bg-red-300 rounded-lg bottom-2 right-2"
+      class="absolute w-1/3 p-4 text-center text-red-800 bg-red-300 rounded-lg  bottom-2 right-2"
     >
       {{ error }}
     </div>
